@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://luthsijjx1ja"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_4nxc1"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3tj7l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dag65"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jyyaa"]
+
+[node name="world" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("PlaneMesh_3tj7l")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_dag65")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("1_4nxc1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_jyyaa")
